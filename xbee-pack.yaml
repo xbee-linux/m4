@@ -1,0 +1,27 @@
+schema-version: 1.0
+
+description: |
+  Le paquet M4 contient un processeur de macros.
+
+  Programme installé: m4
+
+  m4: Copie les fichiers donnés tout en résolvant les macros qu'ils contiennent. 
+      Ces macros sont soit internes soit définies par l'utilisateur et peuvent prendre un nombre illimité d'arguments. 
+      En plus de la simple expansion de macros, m4 dispose de fonctions pour inclure des fichiers nommés, lancer des commandes Unix, 
+      faire des opérations arithmétiques, manipuler du texte, pour la récursion et ainsi de suite.
+      Le programme m4 peut être utilisé soit comme interface d'un compilateur soit comme évaluateur de macros à part.
+
+builder:
+  origin: ./m4-builder
+  var:
+    version: "{% version %}"
+
+
+var:
+  version: 1.4.19
+
+
+provision:
+  - copy:
+      builder: m4
+      todir: /usr
