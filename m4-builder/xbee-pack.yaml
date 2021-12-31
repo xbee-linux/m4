@@ -7,10 +7,6 @@ const:
   srcDir: /usr/src
   exportDir: /opt/m4
 
-
-var:
-  version: 1.4.19
-
 provision:
   - url:
       from: https://ftp.gnu.org/gnu/m4/m4-{% version %}.tar.xz
@@ -19,10 +15,10 @@ provision:
 build:
   - shell:
       cmds:
-        - ./configure --prefix={% exportDir %}
+        - ./configure
         - make
 #        - make check (tests currently fails)
-        - make install
+        - make install DESTDIR={% exportDir %}
       directory: "{% srcDir %}/m4-{% version %}"
   - export: "{% exportDir %}"
 
