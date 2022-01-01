@@ -15,7 +15,7 @@ provision:
 build:
   - shell:
       cmds:
-        - ./configure
+        - ./configure --prefix=/usr
         - make
 #        - make check (tests currently fails)
         - make install DESTDIR={% exportDir %}
