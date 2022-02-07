@@ -13,7 +13,7 @@ description: |
 
 builder: ./m4-builder
 
-var:
+in:
   version: 1.4.19
 
 
