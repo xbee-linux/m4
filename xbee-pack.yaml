@@ -1,5 +1,7 @@
 schema-version: 1.0
 
+type: builder
+
 description: |
   Le paquet M4 contient un processeur de macros.
 
@@ -11,13 +13,21 @@ description: |
       faire des opérations arithmétiques, manipuler du texte, pour la récursion et ainsi de suite.
       Le programme m4 peut être utilisé soit comme interface d'un compilateur soit comme évaluateur de macros à part.
 
-builder: ./m4-builder
-
 in:
   version: 1.4.19
 
-
 provision:
-  - copy:
-      builder: m4
-      todir: /
+  - url:
+      from: https://ftp.gnu.org/gnu/m4/m4-{% version %}.tar.xz
+      todir: "{% xbeeSrc %}"
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr
+        - make
+#        - make check (tests currently fails)
+        - make install DESTDIR={% xbeeOut %}
+      directory: "{% xbeeSrc %}/m4-{% version %}"
+
+
