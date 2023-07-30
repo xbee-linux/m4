@@ -13,13 +13,13 @@ description: |
       faire des opérations arithmétiques, manipuler du texte, pour la récursion et ainsi de suite.
       Le programme m4 peut être utilisé soit comme interface d'un compilateur soit comme évaluateur de macros à part.
 
-in:
+var:
   version: 1.4.19
 
 provision:
   - url:
-      from: https://ftp.gnu.org/gnu/m4/m4-{% version %}.tar.xz
-      todir: "{% xbeeSrc %}"
+      from: https://ftp.gnu.org/gnu/m4/m4-{{ .version }}.tar.xz
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
@@ -27,7 +27,7 @@ build:
         - ./configure --prefix=/usr
         - make
 #        - make check (tests currently fails)
-        - make install DESTDIR={% xbeeOut %}
-      directory: "{% xbeeSrc %}/m4-{% version %}"
+        - make install DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/m4-{{ .version }}"
 
 
