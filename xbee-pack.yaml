@@ -17,9 +17,7 @@ var:
   version: 1.4.19
 
 provision:
-  - url:
-      from: https://ftp.gnu.org/gnu/m4/m4-{{ .version }}.tar.xz
-      todir: "{{ .xbee.src }}"
+  - url: https://ftp.gnu.org/gnu/m4/m4-{{ .version }}.tar.xz
 
 build:
   - shell:
