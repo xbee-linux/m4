@@ -14,7 +14,8 @@ description: |
       Le programme m4 peut être utilisé soit comme interface d'un compilateur soit comme évaluateur de macros à part.
 
 var:
-  version: 1.4.19
+  xbee:
+    version: 1.4.19
 
 provision:
   - url: https://ftp.gnu.org/gnu/m4/m4-{{ .version }}.tar.xz
